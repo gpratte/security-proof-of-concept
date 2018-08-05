@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static java.util.Optional.ofNullable;
-import static org.apache.commons.lang3.StringUtils.removeStart;
+//import static org.apache.commons.lang3.StringUtils.removeStart;
 
 public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private static final String BEARER = "Bearer";
@@ -37,7 +37,7 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
 
         System.out.println("\n!!! param " + param);
         final String token = ofNullable(param)
-          .map(value -> removeStart(value, BEARER))
+          //.map(value -> removeStart(value, BEARER))
           .map(String::trim)
           .orElseThrow(() -> new BadCredentialsException("Missing Authentication Token"));
 
