@@ -44,7 +44,12 @@ Running the following results in a 401 unauthorized status
 curl localhost:8080/widgets
 ```
 
+Running the following results in a 401 unauthorized status
+```
+curl -H "Authorization: Bearer 12345" localhost:8080/widgets
+```
+
 Running the following results in a 200 result status
 ```
-curl -H "Authorization: Bearer 123456789" localhost:8080/widgets
+curl -H "Authorization: Tkn1 12345" localhost:8080/widgets
 ```
