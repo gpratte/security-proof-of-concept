@@ -39,17 +39,29 @@ The type of token that application accepts can be set in the application propert
 
 Followed the authentication steps in SECURING A REST API WITH SPRING SECURITY (see https://octoperf.com/blog/2018/03/08/securing-rest-api-spring-security/)
 
-Running the following results in a 401 unauthorized status
+Running the following results in a 401 unauthorized status because there is no token
 ```
-curl localhost:8080/widgets
-```
-
-Running the following results in a 401 unauthorized status
-```
-curl -H "Authorization: Bearer 12345" localhost:8080/widgets
+curl localhost:8080/tkn1/user/widgets
 ```
 
-Running the following results in a 200 result status
+Running the following results in a 401 unauthorized status because it is an unknown token
 ```
-curl -H "Authorization: Tkn1 12345" localhost:8080/widgets
+curl -H "Authorization: Bearer 12345" localhost:8080/tkn1/user/widgets
 ```
+
+Running the following results in a 200 result status because the token is valid (AuthN)and the user has access to that endpoint (AuthZ)
+```
+curl -H "Authorization: Tkn1 12345" localhost:8080/tkn1/user/widgets
+```
+
+Running the following results in a 403 forbidden status because the token is valid (AuthN) but a super users cannot access that endpoint (AuthZ)
+```
+curl -H "Authorization: Tkn1 23456" localhost:8080/tkn1/user/widgets
+```
+
+Running the following results in a 200 result status because the token is valid (AuthN) and a super user can access the endpoint (AuthZ)
+```
+curl -H "Authorization: Tkn1 23456" localhost:8080/tkn1/superuser/widgets
+```
+
+
