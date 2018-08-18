@@ -27,6 +27,8 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
     private boolean acceptTkn1;
     @Value("${accept.tkn2:false}")
     private boolean acceptTkn2;
+    @Value("${accept.tkn3:false}")
+    private boolean acceptTkn3;
 
     TokenAuthenticationFilter(final RequestMatcher requiresAuth) {
         super(requiresAuth);
@@ -51,19 +53,19 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
 
         UsernamePasswordAuthenticationToken token = null;
 
-        if (param.startsWith("Tkn1")) {
+        if (acceptTkn1 && param.startsWith("Tkn1")) {
             final String tokenValue = ofNullable(param)
               .map(value -> removeStart(value, "Tkn1"))
               .map(String::trim)
               .orElseThrow(() -> new BadCredentialsException("Missing Authentication Token"));
             token = new Token1(tokenValue, tokenValue);
-        } else if (param.startsWith("Tkn2")) {
+        } else if (acceptTkn2 && param.startsWith("Tkn2")) {
             final String tokenValue = ofNullable(param)
               .map(value -> removeStart(value, "Tkn2"))
               .map(String::trim)
               .orElseThrow(() -> new BadCredentialsException("Missing Authentication Token"));
             token = new Token2(tokenValue, tokenValue);
-        } else if (param.startsWith("Tkn3")) {
+        } else if (acceptTkn3 && param.startsWith("Tkn3")) {
             final String tokenValue = ofNullable(param)
               .map(value -> removeStart(value, "Tkn3"))
               .map(String::trim)
