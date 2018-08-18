@@ -1,6 +1,7 @@
 package com.example.poc.controller;
 
 import com.example.poc.PocApplication;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,7 @@ public class WidgetControllerTest {
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
 
         System.out.println(response);
+
+        Assert.assertEquals("Should be 200 success", response.getStatusCodeValue(), 200);
     }
 }
