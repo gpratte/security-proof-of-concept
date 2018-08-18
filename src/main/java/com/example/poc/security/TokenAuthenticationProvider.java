@@ -45,31 +45,31 @@ public class TokenAuthenticationProvider implements AuthenticationProvider {
         switch (token) {
             case "12345":
                 authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-                authorities.add(new SimpleGrantedAuthority("TKN1"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN1"));
                 break;
             case "23456":
                 authorities.add(new SimpleGrantedAuthority("ROLE_SUPER_USER"));
-                authorities.add(new SimpleGrantedAuthority("TKN1"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN1"));
                 break;
             case "34567":
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                authorities.add(new SimpleGrantedAuthority("TKN1"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN1"));
                 break;
             case "45678":
                 authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-                authorities.add(new SimpleGrantedAuthority("TKN2"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN2"));
                 break;
             case "56789":
                 authorities.add(new SimpleGrantedAuthority("ROLE_SUPER_USER"));
-                authorities.add(new SimpleGrantedAuthority("TKN2"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN2"));
                 break;
             case "67890":
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                authorities.add(new SimpleGrantedAuthority("TKN2"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN2"));
                 break;
             case "78901":
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                authorities.add(new SimpleGrantedAuthority("TKN3"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TKN3"));
                 break;
             default:
                 throw new BadCredentialsException("Invalid Authentication Token");
